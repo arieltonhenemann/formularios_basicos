@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}CTO{% endblock %}
+
+{% block content %}
+  <head>
+    <meta charset="UTF-8">
+    <title>Formulário O.S</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Ordem de Serviço pon</h1>
+    <form method="POST">
+        <input name="codigo_os" placeholder="Código da O.S" required>
+        <input name="pon" placeholder="PON" required>
+        <input name="cliente_afetado" placeholder="Cliente Afetado" >
+        <input name="media_nivel" placeholder="Média Nível Pos" >
+        <textarea name="problema" placeholder="Problema" required></textarea>
+        <textarea name="resolucao" placeholder="Resolução" ></textarea>
+        <textarea name="material" placeholder="Material utilizado" ></textarea>
+        <input name="splitter_primaria" placeholder="Splitter Primário" required>
+        <input name="localizacao" placeholder="Localização" required>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <hr>
+
+    <h2>Ordens Pendentes</h2>
+    {% for card in cards %}
+    <div class="card">
+        <p><strong>Código da O.S:</strong> {{ card.codigo_os }}</p>
+        <p><strong>PON:</strong> {{ card.pon }}</p>
+        <p><strong>Cliente Afetado:</strong> {{ card.cliente_afetado }}</p>
+        <p><strong>Média Nível Pós:</strong> {{ card.media_nivel }}</p>
+        <p><strong>Problema:</strong> {{ card.problema }}</p>
+        <p><strong>Resolução:</strong> {{ card.resolucao }}</p>
+        <p><strong>Material:</strong> {{ card.material }}</p>
+        <p><strong>Splitter Primário:</strong> {{ card.splitter_primaria }}</p>
+        <p><strong>Localização:</strong> {{ card.localizacao }}</p>
+        <form action="/editar_pon/{{ card.id }}" method="GET" style="display:inline;">
+            <button type="submit">Editar</button>
+        </form>
+        <form action="/encerrar/{{ card.id }}" method="POST" style="display:inline;">
+            <button type="submit">Encerrar</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+{% endblock %}
+
+
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}CTO{% endblock %}
+
+{% block content %}
+  <head>
+    <meta charset="UTF-8">
+    <title>Formulário O.S</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Ordem de Serviço link</h1>
+    <form method="POST">
+        <input name="codigo_os" placeholder="Código da O.S" required>
+        <input name="Link" placeholder="Link" required>
+        <input name="Porta" placeholder="Porta" required>
+        <input name="nivel_antes" placeholder="Nível antes" required>
+        <input name="nivel_pos" placeholder="Nível pos" required>
+        <textarea name="problema" placeholder="Problema" required></textarea>
+        <textarea name="resolucao" placeholder="Resolução" required></textarea>
+        <textarea name="material" placeholder="Material utilizado" required></textarea>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <hr>
+
+    <h2>Ordens Pendentes</h2>
+    {% for card in cards %}
+    <div class="card">
+        <p><strong>Código da O.S:</strong> {{ card.codigo_os }}</p>
+        <p><strong>Link:</strong> {{ card.Link }}</p>
+        <p><strong>Porta:</strong> {{ card.Porta }}</p>
+        <p><strong>Nível antes:</strong> {{ card.nivel_antes }}</p>
+        <p><strong>Nível pós:</strong> {{ card.nivel_pos }}</p>
+        <p><strong>Problema:</strong> {{ card.problema }}</p>
+        <p><strong>Resolução:</strong> {{ card.resolucao }}</p>
+        <p><strong>Material:</strong> {{ card.material }}</p>
+        <form action="/editar_link/{{ card.id }}" method="GET" style="display:inline;">
+            <button type="submit">Editar</button>
+        </form>
+        <form action="/encerrar/{{ card.id }}" method="POST" style="display:inline;">
+            <button type="submit">Encerrar</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+{% endblock %}
+
+

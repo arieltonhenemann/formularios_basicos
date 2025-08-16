@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}CTO{% endblock %}
+
+{% block content %}
+  <head>
+    <meta charset="UTF-8">
+    <title>Formulário O.S</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Ordem de Serviço cto</h1>
+    <form method="POST">
+        <input name="codigo_os" placeholder="Código da O.S" required>
+        <input name="cto" placeholder="CTO" required>
+        <input name="regiao" placeholder="Região" required>
+        <input name="upc_apc" placeholder="UPC ou APC" required>
+        <input name="splitter" placeholder="Splitter" required>
+        <input name="nivel_antes" placeholder="Nível antes" required>
+        <input name="nivel_pos" placeholder="Nível pós" required>
+        <textarea name="problema" placeholder="Problema" required></textarea>
+        <textarea name="resolucao" placeholder="Resolução" required></textarea>
+        <textarea name="material" placeholder="Material utilizado" required></textarea>
+        <input name="endereco" placeholder="Endereço" required>
+        <input name="localizacao" placeholder="Localização" required>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <hr>
+
+    <h2>Ordens Pendentes</h2>
+    {% for card in cards %}
+    <div class="card">
+        <p><strong>Código da O.S:</strong> {{ card.codigo_os }}</p>
+        <p><strong>CTO:</strong> {{ card.cto }}</p>
+        <p><strong>Região:</strong> {{ card.regiao }}</p>
+        <p><strong>UPC/APC:</strong> {{ card.upc_apc }}</p>
+        <p><strong>Splitter:</strong> {{ card.splitter }}</p>
+        <p><strong>Nível antes:</strong> {{ card.nivel_antes }}</p>
+        <p><strong>Nível pós:</strong> {{ card.nivel_pos }}</p>
+        <p><strong>Problema:</strong> {{ card.problema }}</p>
+        <p><strong>Resolução:</strong> {{ card.resolucao }}</p>
+        <p><strong>Material:</strong> {{ card.material }}</p>
+        <p><strong>Endereço:</strong> {{ card.endereco }}</p>
+        <p><strong>Localização:</strong> {{ card.localizacao }}</p>
+        <form action="/editar/{{ card.id }}" method="GET" style="display:inline;">
+            <button type="submit">Editar</button>
+        </form>
+        <form action="/encerrar/{{ card.id }}" method="POST" style="display:inline;">
+            <button type="submit">Encerrar</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+{% endblock %}
+
+

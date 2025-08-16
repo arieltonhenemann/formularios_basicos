@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+form input, form textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 300px;
+    padding: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+nav {
+  background-color: transparent; /* remove a tarja preta */
+  padding: 20px;
+  text-align: left; /* alinha os botões à esquerda */
+}
+
+nav a {
+  background-color: #007BFF; /* azul */
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-right: 10px; /* espaçamento entre botões */
+  border-radius: 8px; /* bordas suavemente arredondadas */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+nav a:hover {
+  background-color: #0056b3; /* azul mais escuro ao passar o mouse */
+}
+
+.grupo {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

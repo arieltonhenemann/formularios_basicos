@@ -1,0 +1,13 @@
+<form method="POST">
+    <input name="codigo_os" value="{{ card.codigo_os }}">
+    <input name="pon" value="{{ card.pon }}">
+    <input name="regiao" value="{{ card.regiao }}">
+    <input name="cliente_afetado" value="{{ card.cliente_afetado }}">
+    <input name="media_nivel" value="{{ card.media_nivel }}">
+    <textarea name="problema">{{ card.problema }}</textarea>
+    <textarea name="resolucao">{{ card.resolucao }}</textarea>
+    <textarea name="material">{{ card.material }}</textarea>
+    <input name="splitter_primaria" value="{{ card.splitter_primaria }}">
+    <input name="localizacao" value="{{ card.localizacao }}">
+    <button type="submit">Salvar alterações</button>
+</form>

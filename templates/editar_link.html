@@ -1,0 +1,12 @@
+<form method="POST">
+    <input name="codigo_os" value="{{ card.codigo_os }}">
+    <input name="link" value="{{ card.link }}">
+    <input name="porta" value="{{ card.porta }}">
+    <input name="nivel_antes" value="{{ card.nivel_antes }}">
+    <input name="nivel_pos" value="{{ card.nivel_pos }}">
+    <textarea name="problema">{{ card.problema }}</textarea>
+    <textarea name="resolucao">{{ card.resolucao }}</textarea>
+    <textarea name="material">{{ card.material }}</textarea>
+    <input name="localizacao" value="{{ card.localizacao }}">
+    <button type="submit">Salvar alterações</button>
+</form>
