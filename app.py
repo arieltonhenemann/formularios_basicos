@@ -7,6 +7,7 @@ app = Flask(__name__)
 cto_cards = []
 pon_cards = []
 link_cards = []
+ativacao_cards = []
 
 @app.route('/')
 def home():
@@ -164,6 +165,49 @@ def encerrar_link(id):
     global link_cards
     link_cards = [c for c in link_cards if c['id'] != id]
     return redirect(url_for('link'))
+
+#ATIVAÇÃO
+@app.route('/ativacao', methods=['GET', 'POST'])
+def ativacao():
+    if request.method == 'POST':
+        dados = {
+            'id': str(uuid.uuid4()),
+            'tecnico': request.form['tecnico'],
+            'cto': request.form['cto'],
+            'cliente': request.form['cliente'],
+            'lacre': request.form['lacre'],
+            'portas_livres': request.form['portas_livres'],
+            'equipamento': request.form['equipamento'],
+        }
+        ativacao_cards.append(dados)
+        return redirect(url_for('ativacao'))
+    return render_template('ativacao.html', cards=ativacao_cards)
+
+@app.route('/editar_ativacao/<id>', methods=['GET', 'POST'])
+def editar_ativacao(id):
+    card = next((c for c in ativacao_cards if c['id'] == id), None)
+    if not card:
+        return "Card não encontrado", 404
+
+    if request.method == 'POST':
+        card.update({
+            'tecnico': request.form['tecnico'],
+            'cto': request.form['cto'],
+            'cliente': request.form['cliente'],
+            'lacre': request.form['lacre'],
+            'portas_livres': request.form['portas_livres'],
+            'equipamento': request.form['equipamento'],
+        })
+        return redirect(url_for('ativacao'))
+
+    return render_template('editar_ativacao.html', card=card)
+
+@app.route('/encerrar_ativacao/<id>', methods=['POST'])
+def encerrar_ativacao(id):
+    global ativacao_cards
+    ativacao_cards = [c for c in ativacao_cards if c['id'] != id]
+    return redirect(url_for('ativacao'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
