@@ -3,14 +3,7 @@
 {% block title %}CTO{% endblock %}
 
 {% block content %}
-  <head>
-    <meta charset="UTF-8">
-    <title>Formulário O.S</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-
-<body>
-    <h1>Ordem de Serviço cto</h1>
+    <h1>Ordem de Serviço CTO</h1>
     <form method="POST">
         <input name="codigo_os" placeholder="Código da O.S" required>
         <input name="cto" placeholder="CTO" required>
@@ -52,7 +45,6 @@
         </form>
     </div>
     {% endfor %}
-</body>
 {% endblock %}
 
 
