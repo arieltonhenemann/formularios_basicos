@@ -11,7 +11,7 @@ ativacao_cards = []
 
 @app.route('/')
 def home():
-    return render_template('index.html')  # Crie um index.html herdando de base.html
+    return render_template('index.html')
 
 # CTO
 @app.route('/cto', methods=['GET', 'POST'])
