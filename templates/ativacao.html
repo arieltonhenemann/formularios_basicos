@@ -5,16 +5,12 @@
 {% block content %}
     <h1>Ordem de Serviço Ativação</h1>
     <form method="POST">
-        <input name="tecnico" placeholder="Técnico" required>
-        <input name="cto" placeholder="CTO" required>
-        <input name="cliente" placeholder="Cliente" required>
-        <input name="lacre" placeholder="Lacre" required>
-        <input name="portas_livres" placeholder="Portas Livres" required>
-        <input name="equipamento" placeholder="Equipamento" required>
-        <select name="mk" id="mk">
-            <option value="Mkt1">Pendente</option>
-            <option value="Mkt2">Finalizado</option>
-        </select>
+        <input name="tecnico" placeholder="Técnico">
+        <input name="cto" placeholder="CTO">
+        <input name="cliente" placeholder="Cliente">
+        <input name="lacre" placeholder="Lacre">
+        <input name="portas_livres" placeholder="Portas Livres">
+        <input name="equipamento" placeholder="Equipamento">
         <button type="submit">Salvar</button>
     </form>
 
@@ -27,9 +23,8 @@
         <p><strong>CTO:</strong> {{ card.cto }}</p>
         <p><strong>Cliente:</strong> {{ card.cliente }}</p>
         <p><strong>Lacre:</strong> {{ card.lacre }}</p>
-        <p><strong>Portas livres:</strong> {{ card.portas_livre }}</p>
+        <p><strong>Portas livres:</strong> {{ card.portas_livres }}</p>
         <p><strong>Equipamento:</strong> {{ card.equipamento }}</p>
-        <p><strong>Status:</strong> {{ card.mk }}</p>
         <form action="/editar_ativacao/{{ card.id }}" method="GET" style="display:inline;">
             <button type="submit">Editar</button>
         </form>
