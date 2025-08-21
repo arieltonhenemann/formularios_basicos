@@ -11,6 +11,7 @@
         <input name="lacre" placeholder="Lacre">
         <input name="portas_livres" placeholder="Portas Livres">
         <input name="equipamento" placeholder="Equipamento">
+        <textarea name="mapeamento" placeholder="Mapeamento"></textarea>
         <button type="submit">Salvar</button>
     </form>
 
@@ -25,6 +26,7 @@
         <p><strong>Lacre:</strong> {{ card.lacre }}</p>
         <p><strong>Portas livres:</strong> {{ card.portas_livres }}</p>
         <p><strong>Equipamento:</strong> {{ card.equipamento }}</p>
+        <p><strong>Mapeamento:</strong> {{ card.mapeamento }}</p>
         <form action="/editar_ativacao/{{ card.id }}" method="GET" style="display:inline;">
             <button type="submit">Editar</button>
         </form>

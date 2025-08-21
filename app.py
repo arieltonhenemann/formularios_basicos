@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
-import uuid  # Para gerar IDs únicos
+import uuid  # Gera IDs únicos
 
 app = Flask(__name__)
 
-# Listas separadas para cada tipo de card
+# Listas separadas para cada formulário
 cto_cards = []
 pon_cards = []
 link_cards = []
 ativacao_cards = []
 
+# Página Inicial
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -178,6 +179,8 @@ def ativacao():
             'lacre': request.form['lacre'],
             'portas_livres': request.form['portas_livres'],
             'equipamento': request.form['equipamento'],
+            'mapeamento': request.form['mapeamento'],
+
         }
         ativacao_cards.append(dados)
         return redirect(url_for('ativacao'))
@@ -197,6 +200,7 @@ def editar_ativacao(id):
             'lacre': request.form['lacre'],
             'portas_livres': request.form['portas_livres'],
             'equipamento': request.form['equipamento'],
+            'mapeamento': request.form['mapeamento'],
         })
         return redirect(url_for('ativacao'))
 
